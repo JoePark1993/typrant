@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
-import PhaserContainer from './PhaserContainer.js';
+import{
+  Link,
+  BrowserRouter,
+  Route,
+} from 'react-router-dom'
+
+import Play from './Play/Play.js';
+import Home from './Home.js';
+import Login from './Login/Login.js';
 
 class App extends Component {
-  state={
-    data:null,
-  };
 
   componentDidMount(){
     this.callBackEndAPI()
@@ -26,7 +30,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PhaserContainer/>
+        <BrowserRouter>
+          <div>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/Play/Play'>Play</Link></li>
+            <li><Link to='/Login/Login'>Login</Link></li>
+          </ul>
+          <Route path="/" exact={true} component={Home}/>
+          <Route 
+            path="/Play/Play"
+            render={(props)=><Play/>}
+          />
+          <Route 
+            path="/Login/Login"
+            render={(props)=><Login/>}
+          />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
