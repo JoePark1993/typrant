@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import{
+  Link,
+  BrowserRouter,
+  Route,
+} from 'react-router-dom'
+
+import Play from './Play/Play.js';
+import Home from './Home.js';
+import Login from './Login/Login.js';
 
 class App extends Component {
+
+  componentDidMount(){
+    this.callBackEndAPI()
+      .then(res=> this.setState({data:res.express}))
+      .catch(err=> console.log(err));
+  }
+
+  callBackEndAPI = async() => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if( response.status !== 200 ){
+      throw Error(body.message)
+    }
+    return body;
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <BrowserRouter>
+          <div>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/Play/Play'>Play</Link></li>
+            <li><Link to='/Login/Login'>Login</Link></li>
+          </ul>
+          <Route path="/" exact={true} component={Home}/>
+          <Route 
+            path="/Play/Play"
+            render={(props)=><Play/>}
+          />
+          <Route 
+            path="/Login/Login"
+            render={(props)=><Login/>}
+          />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
 }
+
+
 
 export default App;
