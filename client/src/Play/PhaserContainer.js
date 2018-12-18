@@ -16,6 +16,9 @@ class PhaserContainer extends Component{
 
     window.game = new Game();
   }
+  componentWillUnmount(){
+    window.game.destroy()
+  }
 
   render(){
     return (
