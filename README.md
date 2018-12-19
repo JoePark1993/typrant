@@ -13,67 +13,25 @@ The hope is that through competition kids will be more inclined to learn. Also a
 
 ## Running the Code
 
-First use `npm install` to download dependencies from package.json. Then run `node server.js`.
+There are 2 different servers you have to run for this project. There is the react server which just servers up the files for viewing, and a second server which handles the actual transfer of data. So to run this project you need to do the following:
+1. Run `npm install` in both the root directory of the project, and in the client folder
+2. Run `node server.js` in the root directory of the project
+3. Run `npm start` in the client folder
 
 ## Dependencies
 
-This project is based in javascript, and we are using npm to manage packages. The project dependencies are:
+This project is based in javascript, and we are using npm to manage packages. All the project dependencies can be found in the 2 package.json files, but some importand ones are:
 1. socket.io
 2. express
 3. phaser3
+4. react
+5. react-bootstrap
 
 ## Structure
 
-Currently all the game logic is in `public/js/game.js` and all the server logic is in `server.js`. We hope to change this and properly manage all the scenes in different folders. All game assets are in the `public/assets/` folder. 
+As previously mentioned there are 2 different places where code is being served. This may or may not be changed as we learn more about webpack, and building single page applications (SPA's). However currently, server side code is in the rootdirectory, and the react project is in the client folder. Inside the client folder there is an src/ folder. In src/ is index.js which is the entry point of the project. App.js contains the parent component that everything is in. For gamedevs the game logic is going to be in the Play/ folder. Here there is a game/ folder which contains: assets/ , Scenes/, and Config/. Scenes/ is where all the game logic is going to be.
 
 ## Contributing
 
-We will be populating the Issues and Projects board soon! We hope to make it as easy as possible to contribute to this project. 
+Please reference this [doc](https://docs.google.com/document/d/1uIKXQbMUMWy3Bdv6m15ez-7zJg3zO6wmDYPQ__8N-Fg/edit?usp=sharing) to get started with contributing. This details  how the kanban board works as well as certain coding conventions we hope to employ to maintain readability. 
 
-We also have a small growing group of alpha testers. Alpha play tester will be alerted when the game will be up on the web at: https://cs141-kaikaikoala.c9users.io/ . Please email kaishinpk@gmail.com if you would like to be added to the group. Currently we host the game on a temporary aws c9 server for 30 minute play tests. 
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
