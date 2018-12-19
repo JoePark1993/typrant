@@ -1,0 +1,11 @@
+username:admin
+access key: AKIAIWTDFRZ5AGUNQXXQ
+secret access key: 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
+
+
+user-app
+app client id : 45c6sa7ekc76s0sgrs2sjq2vhp
+
+
+typrant pool
+62ffu49o1i08gk6kfeh9ihpnd4
