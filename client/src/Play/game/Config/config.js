@@ -1,4 +1,5 @@
 import Phaser from  'phaser';
+import MenuScene from '../Scenes/MenuScene';
 
 export default{
   type: Phaser.AUTO,
@@ -11,5 +12,8 @@ export default{
       gravity: { y: 200 }
     }
   },
+  scene:[
+    MenuScene,
+  ],
 };
 
