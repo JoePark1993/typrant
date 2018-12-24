@@ -1,6 +1,14 @@
 import Phaser from  'phaser';
 
 export default class MenuScene extends Phaser.Scene{
+
+  constructor(){
+    super({
+      key: 'MenuScene',
+    });
+    console.log("Menu Scene");
+  }
+
   create(){
     document.getElementById("promptBox").style.visibility = "hidden";
 

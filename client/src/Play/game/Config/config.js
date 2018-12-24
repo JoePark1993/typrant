@@ -1,5 +1,7 @@
 import Phaser from  'phaser';
 import MenuScene from '../Scenes/MenuScene';
+import PreloadScene from '../Scenes/PreloadScene';
+import InstructionScene from '../Scenes/InstructionScene';
 
 export default{
   type: Phaser.AUTO,
@@ -13,7 +15,9 @@ export default{
     }
   },
   scene:[
+    PreloadScene,
     MenuScene,
+    InstructionScene,
   ],
 };
 
