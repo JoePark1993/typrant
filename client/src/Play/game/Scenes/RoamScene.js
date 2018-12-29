@@ -103,7 +103,6 @@ export default class RoamScene extends Phaser.Scene{
 
         let players = [];
         players[0]=playerInfo;
-        console.log('massupdate');
         self.events.emit('refresh', players);
 
       });
@@ -122,7 +121,6 @@ export default class RoamScene extends Phaser.Scene{
     });
 
     this.socket.on('lose',function(){
-      console.log( self.player.mass );
       self.cameras.main.shake( 300 );
       self.player.x = Math.floor(Math.random() * 420 ) + 40;
       self.player.y = Math.floor(Math.random() * 420 ) + 40;
