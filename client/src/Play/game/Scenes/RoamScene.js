@@ -1,7 +1,7 @@
 import Phaser from  'phaser';
 import socketIOClient from 'socket.io-client';
 
-//var playersList=[];
+var playersList=[];
 export default class RoamScene extends Phaser.Scene{
   constructor(){
     super({
@@ -20,11 +20,24 @@ export default class RoamScene extends Phaser.Scene{
     obstacles.setCollisionByExclusion([-1]);
 
     var self = this;
-    const socket = socketIOClient('http://localhost:5000');
+    this.socket = socketIOClient('http://localhost:5000');
     this.otherPlayers = this.physics.add.group();
     this.player = this.physics.add.sprite( 50 , 50 ,'player', 6);
     //at the beginning
-    /*
+
+    //camera things
+    this.physics.world.bounds.width = map.widthInPixels; //480
+    this.physics.world.bounds.height = map.heightInPixels;//480
+    this.cameras.main.roundPixels = true;
+    this.cameras.main.setBounds(0,0,map.widthInPixels, map.heightInPixels);
+
+    //cursor things
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    //colision things
+    this.physics.add.collider(this.player,obstacles);
+    this.physics.add.overlap(this.player,this.otherPlayers, this.p2p ,null,this);
+
     this.socket.on('currentPlayers',function(players){
       Object.keys(players).forEach((id)=>{
 
@@ -40,19 +53,11 @@ export default class RoamScene extends Phaser.Scene{
         }
         playersList.push(players[id]);
 
-
         self.events.emit('refresh', playersList);
       });
-      console.log(playersList.length);
-      var index = playersList.length -1;
-      console.log(playersList[index].username);
-
-      document.getElementById("showUser").innerHTML= playersList[index].username;
     });
-    */
 
     //durring game player adding
-/*
     this.socket.on('newPlayer', (playerInfo)=>{
       addOtherPlayers( self, playerInfo);
 
@@ -60,10 +65,8 @@ export default class RoamScene extends Phaser.Scene{
       players[0]=playerInfo;
       self.events.emit('refresh', players);
     });
-*/
 
     //remove players
-/*
     this.socket.on('disconnect',(playerId)=>{
       self.otherPlayers.getChildren().forEach(function (otherPlayers) {
         if (playerId === otherPlayers.playerId) {
@@ -71,9 +74,7 @@ export default class RoamScene extends Phaser.Scene{
         }
       });
     });
-*/
 
-/*
     //move players
     this.socket.on('playerMoved', function(playerInfo){
       self.otherPlayers.getChildren().forEach( function(otherPlayer){
@@ -82,10 +83,8 @@ export default class RoamScene extends Phaser.Scene{
         }
       });
     });
-    */
 
     //update battle status
-/*
     this.socket.on('playerBattle', function(playerInfo){
       self.otherPlayers.getChildren().forEach( function(otherPlayer){
         if( playerInfo.playerId === otherPlayer.playerId ){
@@ -93,9 +92,7 @@ export default class RoamScene extends Phaser.Scene{
         }
       });
     });
-    */
 
-/*
     //update mass
     this.socket.on('massUpdate', function(playerInfo){
       self.otherPlayers.getChildren().forEach( function(otherPlayer){
@@ -110,9 +107,7 @@ export default class RoamScene extends Phaser.Scene{
 
       });
     });
-*/
 
-/*
     this.socket.on('refesh',function(playerList){
       self.events.emit('refresh', playerList);
     });
@@ -140,7 +135,6 @@ export default class RoamScene extends Phaser.Scene{
     this.socket.on('battleOutCome',function(){
       self.player.inBattle = false ;
     });
-*/
 
     /*
     let battleListener = this.scene.get('TypeScene');
@@ -156,24 +150,6 @@ export default class RoamScene extends Phaser.Scene{
       //self.events.emit('closeTypeScene');
     });
     */
-
-
-    //camera things
-    this.physics.world.bounds.width = map.widthInPixels; //480
-    this.physics.world.bounds.height = map.heightInPixels;//480
-    this.cameras.main.roundPixels = true;
-    this.cameras.main.setBounds(0,0,map.widthInPixels, map.heightInPixels);
-
-    //cursor things
-    this.cursors = this.input.keyboard.createCursorKeys();
-
-    //colision things
-    this.physics.add.collider(this.player,obstacles);
-    this.physics.add.overlap(this.player,this.otherPlayers, this.p2p ,null,this);
-
-    //HUDScene Launch
-    this.scene.launch('HUDScene');
-
 
   }
 
@@ -192,7 +168,7 @@ export default class RoamScene extends Phaser.Scene{
       var y=this.player.y;
 
       if(this.player.oldPosition && (x!==this.player.oldPosition.x || y!==this.player.oldPosition.y)){
-        //this.socket.emit('playerMovement',{x:this.player.x,y:this.player.y});
+        this.socket.emit('playerMovement',{x:this.player.x,y:this.player.y});
       }
 
       this.player.oldPosition={

@@ -21,12 +21,10 @@ io.on('connection', function(socket){
     inBattle: false,
     };
 
-  /*
   //send list of players to new player
   socket.emit('currentPlayers',players);
   //update current players with new player
   socket.broadcast.emit( 'newPlayer' , players[socket.id]);
-  */
 
 
   //handle if a user leaves the game
@@ -37,7 +35,6 @@ io.on('connection', function(socket){
 
   });
 
-  /*
   socket.on('playerMovement', function( movementData){
     players[socket.id].x=movementData.x;
     players[socket.id].y=movementData.y;
@@ -82,7 +79,6 @@ io.on('connection', function(socket){
     io.emit('massUpdate', players[playerId] );
     io.emit('massUpdate', players[otherPlayerId] );
   });
-  */
 
 
 });
