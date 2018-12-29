@@ -15,11 +15,7 @@ export default class TypeScene extends Phaser.Scene{
     for(let i = 0; i < 5; i++){
       passageArr.push(generateWords());
     }
-
-    var self = this;
     this.add.text(450,200,passageArr.join(' '),{backgroundColor:'#333'} );
-
-    let roamListener = this.scene.get('RoamScene');
   }
 
   update(){
@@ -28,7 +24,7 @@ export default class TypeScene extends Phaser.Scene{
     if( (q < passageArr.length) ){
       document.getElementById('tester').innerHTML=passageArr[q] ;
 
-      if( passageArr[q] == document.getElementById('userInput').value){
+      if( passageArr[q] === document.getElementById('userInput').value){
         ++q;
 
         document.getElementById('tester').innerHTML=passageArr[q] ;

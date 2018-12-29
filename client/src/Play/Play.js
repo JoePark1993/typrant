@@ -7,9 +7,7 @@ class Play extends Component{
     return(
       <div>
         <h1>Play</h1>
-        <p>More stuff just to check</p>
         <PhaserContainer/>
-        <p>So is this a problem with phaser</p>
       </div>
     );
   }
