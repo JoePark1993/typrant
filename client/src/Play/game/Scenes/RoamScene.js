@@ -136,7 +136,6 @@ export default class RoamScene extends Phaser.Scene{
       self.player.inBattle = false ;
     });
 
-    /*
     let battleListener = this.scene.get('TypeScene');
     battleListener.events.on('battleEnd', function(players){
       console.log('battle end');
@@ -149,7 +148,6 @@ export default class RoamScene extends Phaser.Scene{
 
       //self.events.emit('closeTypeScene');
     });
-    */
 
   }
 
