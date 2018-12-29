@@ -17,7 +17,7 @@ export default class TypeScene extends Phaser.Scene{
     }
 
     var self = this;
-    //var TitleTxt = this.add.text(10,200,passageArr.join(' '),{backgroundColor:'#333'} );
+    this.add.text(450,200,passageArr.join(' '),{backgroundColor:'#333'} );
 
     let roamListener = this.scene.get('RoamScene');
   }

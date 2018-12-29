@@ -12,6 +12,7 @@ export default class RoamScene extends Phaser.Scene{
 
   create(){
 
+    this.scene.launch('HUDScene');
     //map things
     var map = this.make.tilemap({key:'map'});
     var tiles = map.addTilesetImage('spritesheet', 'tiles');
@@ -146,7 +147,7 @@ export default class RoamScene extends Phaser.Scene{
       self.socket.emit('playerMovement',{x:self.player.x,y:self.player.y});
       self.scene.stop( 'TypeScene');
 
-      //self.events.emit('closeTypeScene');
+      self.events.emit('closeTypeScene');
     });
 
   }

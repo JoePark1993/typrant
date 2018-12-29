@@ -4,6 +4,7 @@ import PreloadScene from '../Scenes/PreloadScene';
 import InstructionScene from '../Scenes/InstructionScene';
 import RoamScene from '../Scenes/RoamScene';
 import TypeScene from '../Scenes/TypeScene';
+import HUDScene from '../Scenes/HUDScene';
 
 export default{
   type: Phaser.AUTO,
@@ -23,6 +24,7 @@ export default{
     InstructionScene,
     RoamScene,
     TypeScene,
+    HUDScene,
   ],
 };
 
