@@ -1,46 +1,24 @@
 const express = require('express');
-const app = express();
-const port = process.env.PORT || 5000;
+const http = require('http');
+const socketIO = require( 'socket.io');
+const port = /*process.env.PORT */5000;
 
-// console.log that your server is up and running
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-// create a GET route
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
-
-var server = require('http').Server(app);
-var io = require('socket.io').listen(server);
+const app = express() ;
+const server = http.createServer(app);
+const io = socketIO(server);
 
 var players = {};
-
-app.use(express.static(__dirname + '/public'));
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-
 
 io.on('connection', function(socket){
 
   console.log('a user connected');
 
-
-  //HELP PLS TEAM
   players[socket.id]={
     x: Math.floor(Math.random() * 420 ) + 40,
     y: Math.floor(Math.random() * 420 ) + 40,
-    /*
-    x: Math.floor(Math.random() * 100 ) + 40,
-    y: Math.floor(Math.random() * 100 ) + 40,
-    */
     playerId: socket.id,
     mass: 50,
     inBattle: false,
-    username: generateName(),
-
-    //^^^you might want to make this the socket.id in the mean time
     };
 
   //send list of players to new player
@@ -107,16 +85,8 @@ io.on('connection', function(socket){
 
 
 
-/*
-server.listen(8081, function () {
-    console.log(`Listening on ${server.address().port}`);
+server.listen( port , function () {
+    console.log(`Listening on ${port}`);
 });
-*/
-
-function generateName(){
-var randomNames = ["Harry", "Joe", "Bob", "David", "Frodo", "Luke", "Tarzan", "Michalis", "Mufasa" ];
-var rand = randomNames[Math.floor(Math.random() * randomNames.length)];
-return rand+Math.floor(Math.random() * 100) + 1;
-};
 
 //server.listen( process.env.PORT,process.env.IP);

@@ -11,21 +11,12 @@ import Login from './Login/Login.js';
 
 class App extends Component {
 
-  componentDidMount(){
-    this.callBackEndAPI()
-      .then(res=> this.setState({data:res.express}))
-      .catch(err=> console.log(err));
-  }
-
-  callBackEndAPI = async() => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if( response.status !== 200 ){
-      throw Error(body.message)
+  constructor(){
+    super()
+    this.state={
+      endpoint:"https://localhost:5000"
     }
-    return body;
-  };
+  }
 
   render() {
     return (
