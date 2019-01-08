@@ -1,5 +1,34 @@
 import React from 'react';
 
+class NavDropdown extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isToggleOn: false
+      };
+    }
+    showDropdown(e) {
+        e.preventDefault();
+        this.setState(prevState => ({
+          isToggleOn: !prevState.isToggleOn
+        }));
+      }
+    render() {
+      const classDropdownMenu = 'dropdown-menu' + (this.state.isToggleOn ? ' show' : '')
+      return (
+        <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {this.props.name}
+          </a>
+          <div className={classDropdownMenu} aria-labelledby="navbarDropdown">
+            {this.props.children}
+          </div>
+        </li>
+      )
+    }
+  }
+
 class Navigation extends React.Component {
   render() {
     return (
@@ -34,15 +63,23 @@ class Navigation extends React.Component {
                 <a className="dropdown-item" href="/">Something else here</a>
               </div>
             </li>
+           <NavDropdown name="*username*">
+            <a className="dropdown-item" href="/">Action</a>
+            <a className="dropdown-item" href="/">Another action</a>
+            <div className="dropdown-divider"></div>
+            <a className="dropdown-item" href="/">Something else here</a>
+            </NavDropdown> 
           </ul>
-          <form className="form-inline my-2 my-lg-0">
+          <form className="form-inline my-3 my-lg-0">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button className="btn b tn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
     )
   }
 }
+
+
 
 export default Navigation;
