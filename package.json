@@ -24,6 +24,7 @@
   "homepage": "https://github.com/typrant/typrant#readme",
   "dependencies": {
     "aws-sdk": "^2.378.0",
+    "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "socket.io": "^2.2.0",
     "uuid": "^3.3.2"

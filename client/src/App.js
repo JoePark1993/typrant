@@ -4,10 +4,12 @@ import{
   BrowserRouter,
   Route,
 } from 'react-router-dom'
+import './App.css'
 
 import Play from './Play/Play.js';
 import Home from './Home.js';
 import Login from './Login/Login.js';
+import Navigation from './Components/Navigation';
 
 class App extends Component {
 
@@ -23,6 +25,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
+          <Navigation /> 
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/Play/Play'>Play</Link></li>
