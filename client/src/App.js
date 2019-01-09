@@ -10,6 +10,7 @@ import Play from './Play/Play.js';
 import Home from './Home.js';
 import Login from './Login/Login.js';
 import Navigation from './Components/Navigation';
+import StickyFooter from './Components/Footer';
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
             path="/Login/Login"
             render={(props)=><Login/>}
           />
+          <StickyFooter />
           </div>
         </BrowserRouter>
       </div>
