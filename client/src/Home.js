@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 
+import HomeHero from './HomeComponents/HomeHero';
+
 class Home extends Component{
   render(){
     return(
-      <h1>Hello World</h1>
-    );
+      <div>
+      <HomeHero />
+      </div>
+    )
   }
 }
+
+
+
 
 export default Home;
