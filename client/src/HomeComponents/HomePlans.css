@@ -1,0 +1,45 @@
+.PlanBackground {
+    background-color: #4d2c91;
+    padding: 50px;
+}
+
+.Plans {
+    color: white;
+    font-size: 28px;
+    position: center;
+    padding-bottom: 50px;
+}
+
+.PlanButton {
+    background-color: #7e57c2; /* Green */
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    padding: 50px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+.TeacherStudent {
+    margin: 50px;
+}
+
+.ParentChild {
+   margin: 50px;
+}
+
+.Independent {
+   margin: 50px;
+}
+
+a:link {
+    color: white;
+    font-weight: 200px;
+}
+
+a:hover {
+    color: white;
+    font-weight: 400px;
+}
