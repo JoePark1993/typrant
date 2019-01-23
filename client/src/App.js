@@ -27,11 +27,11 @@ class App extends Component {
         <BrowserRouter>
           <div>
           <Navigation /> 
-          <ul>
+          {/* <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/Play/Play'>Play</Link></li>
             <li><Link to='/Login/Login'>Login</Link></li>
-          </ul>
+          </ul> */}
           <Route path="/" exact={true} component={Home}/>
           <Route 
             path="/Play/Play"
