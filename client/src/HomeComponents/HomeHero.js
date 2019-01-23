@@ -24,5 +24,4 @@ class HomeHero extends React.PureComponent {
     }
 }
 
-
 export default HomeHero;
